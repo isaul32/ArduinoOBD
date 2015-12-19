@@ -39,7 +39,7 @@
 /**************************************
 * GPS configuration
 **************************************/
-#define USE_GPS 1
+//#define USE_GPS 1
 #define GPSUART Serial2
 #define MAX_GPS_PROCESS_TIME 50 /* ms */
 #define GPS_DATA_TIMEOUT 2000 /* ms */
@@ -51,8 +51,8 @@
 /**************************************
 * Accelerometer & Gyro
 **************************************/
-#define USE_MPU6050 1
-//#define USE_MPU9150 1
+//#define USE_MPU6050 1
+#define USE_MPU9150 1
 #define ACC_DATA_RATIO 160
 #define GYRO_DATA_RATIO 256
 #define COMPASS_DATA_RATIO 8
