@@ -625,6 +625,7 @@ void showECUCap()
       }
     }
     int values[sizeof(pidlist)];
+    
     bool scanned = false;
     for (;;) {
       bool touched = false;
@@ -796,6 +797,7 @@ void setup()
     showStates();
 #endif
 
+#if ENABLE_OBD
     obd.begin();
 
     // this will send a bunch of commands and display response
@@ -815,12 +817,23 @@ void setup()
         lcd.println(buf);
     }
 
+#endif
+
     lcd.setCursor(0, 28);
     lcd.setColor(RGB16_GREEN);
     lcd.setFontSize(FONT_SIZE_MEDIUM);
     lcd.print("Tap on LCD to continue");
 
+#if ENABLE_OBD
     showECUCap();
+#else
+    bool touched = false;
+    for (;;) {
+      touched = touch.available();
+       if (touched) break;
+    }
+#endif
+
     lcd.setCursor(0, 28);
     lcd.setColor(RGB16_YELLOW);
     lcd.setFontSize(FONT_SIZE_MEDIUM);
